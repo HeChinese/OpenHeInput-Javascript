@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>和码在线输入 HeInput Online</title>
+</head>
+<body style="background-color:wheat" onload="pageLoaded()">
+    <h2 style="color:blue; text-align:center">和码在线输入</h2>
+
+    <div id="Section1" style="text-align:center">
+        <textarea id="heTextArea" autofocus="autofocus" style="color:black; font-size :20px; font-family:NSimSun;">正在传送码本…</textarea>
+    
+        <div id="inputDisplay" style="position:absolute; visibility:hidden; text-align:left; min-width:106px; background-color:cyan">
+            <span style="color:cyan">|</span><label id="MaSpan" style="font-size:21px; color:red;"></label><br />
+            <span style="color:cyan">|</span><label id="CCharSpan" style="font-size:18px; color:green; font-family:FangSong"></label><br />
+            <span style="font-size:x-small; color:cyan">|</span><select id="CandSelect" style="border:0px; min-width:103px; background-color:lightcyan; font-size:16px;font-family:SimSun"></select>          
+        </div>
+    </div>
+	<p style="text-align:center">
+        <input type="radio" id='heInput' name="inputMode" value="Chinese" checked="checked"  onclick="inputPage.toggleHeInput()"/>中文
+        &nbsp;
+        <input type="radio" id='englishInput' name="inputMode" value="English" onclick="inputPage.toggleHeInput()"/>英文
+        &nbsp; &nbsp;
+        <input  type="button" onclick="inputPage.copyAll()" value="全拷贝"/> 
+        &nbsp; &nbsp;
+        <input  type="button" onclick="inputPage.toggleMaMap()" value="编码查询" id="maMapToggleButton"/>
+    </p>
+    <div style="color:red; font-size:large; text-align:center">(Shift键换英文 ---- Ctrl键换中文)</div>
+    <div id="Section2" style="text-align:center">
+		<div id='keyboardSettingSection' style="color:Green">
+            <p><input type="radio" id='mainKeyboardOnly4HeInput' name="keyboardSetting" value="mainKeyboardOnly" onclick="inputPage.changeKeyboardSetting()"/>大键盘汉字，小键盘数字
+            </p>
+            <p><input type="radio" id='numPadOnly4HeInput'  name="keyboardSetting" value="numPadOnly" onclick="inputPage.changeKeyboardSetting()"/>大键盘英文，小键盘汉字<br />
+            </p>
+            <p><input type="radio" id='both4HeInput' name="keyboardSetting" value="both" checked="checked"  onclick="inputPage.changeKeyboardSetting()"/>大小键盘都输入汉字(预设)<br />
+		    </p>
+        </div>
+		<p>
+		    <input type="text" style="text-align:center; color:blue; font-size:24px; width:100px; height:30px; font-family:MingLiU" id="DanZi_Code_Wanted" value="例"/>&nbsp;&nbsp;
+		    <input type="button" onclick="inputPage.findDanZiCode()" value="查询编码"/>
+		</p>
+        <p id='Code_Result' style="color:red; font-size:20px; font-family:KaiTi">&nbsp</p>
+        <p> <input  type="button" onclick="inputPage.toggleMaMap()" value="显示字根表"/></p>
+	</div>
+	<img alt='heInput MaMap'  style="position:absolute; top: 400px; left:300px"  id="maMapImage" src=".\Image\mamap.bmp"/>
+    <script>
+        function pageLoaded() {
+            inputPage.init();
+        }
+    </script>
+    <script src=".\Script\CaretPosition.js"></script>
+    <script src=".\Script\Setting.js"></script>
+    <script src=".\Script\TypingState.js"></script>
+    <script src=".\Script\Engine.js"></script>
+    <script src=".\Script\HeDataServer.js"></script>
+    <script src=".\Script\HeClient.js"></script>	
+    <script src=".\Script\InputPage.js"></script>
+
+    <script src=".\MaBen\DanZi_Online_Index.txt"></script>
+	<script src=".\MaBen\DanZi_Online_MaBen.txt"></script>	
+    <script src=".\MaBen\CiZu_Online_Index.txt"></script>
+	<script src=".\MaBen\CiZu_Online_MaBen.txt"></script>
+	<script src=".\MaBen\Symbol_Online_MaBen.txt"></script>
+	<script src=".\MaBen\DanZi_List.txt"></script>
+</body>
+</html>
