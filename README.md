@@ -1,5 +1,10 @@
 # OpenHeInput-Javascript
-Open source HeInput Javascript online application
+
+'He' is Chinese word 和's PinYin(Sound), it means 'and' or 'with'.
+
+'HeInput'('和码' in Chinese) is a name of famous Chinese input mathod. 
+
+OpenHeInput-Javascript is open source HeInput Javascript online application
 
 It is full functional Chinese online Input application, available with with following link:<br/>
 http://www.hezi.net/he/hema/Online/HeInput.htm
