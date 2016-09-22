@@ -69,6 +69,10 @@ function HeMaEngine() {
     // 
     function getDanZiIndex(typingState) {
 
+        if (typeof danZi_Index === 'undefined') {
+            return;
+        }
+
         var maShu = typingState.getMaShu();
         var m1 = typingState.getMa1();
         var m2 = typingState.getMa2();
@@ -184,6 +188,10 @@ function HeMaEngine() {
 
     function getCiZuIndex(typingState) {
 
+        if (typeof ciZu_Index === 'undefined') {
+            return;
+        }
+        
         var maShu = typingState.getMaShu();
         var m1 = typingState.getMa1();
         var m2 = typingState.getMa2();
@@ -651,6 +659,9 @@ function SymbolEngine() {
     };
 
     function formCandArray(typingState) {
+
+        if (typeof symbol_MaBen === 'undefined' || symbol_MaBen.length == 0)
+            return;
 
         var maShu = typingState.getMaShu();
         var m1 = typingState.getMa1();

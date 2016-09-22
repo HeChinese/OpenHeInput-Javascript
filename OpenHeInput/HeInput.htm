@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>和码在线输入 HeInput Online</title>
+</head>
+<body style="background-color:wheat" onload="pageLoaded()">
+    <h2 style="color:blue; text-align:center">和码在线输入</h2>
+    <div  style="text-align:center"><a href="https://github.com/HeChinese/OpenHeInput-Javascript" target="_blank"><span style="color:green">开源软件(Open Source)链接</span></a>
+    </div><br />
+    <div id="Section1" style="text-align:center">
+        <textarea id="heTextArea" onchange="function textChanged(){}" autofocus="autofocus" style="color:black; font-size :20px; font-family:NSimSun;">正在传送码本…</textarea>
+    
+        <script src=".\Script\Candidate_ListView.js"></script>
+    </div>
+	<p style="text-align:center">
+        <input type="radio" id='heInput' name="inputMode" value="Chinese" checked="checked"  onclick="inputPage.toggleHeInput()"/>中文
+        &nbsp;
+        <input type="radio" id='englishInput' name="inputMode" value="English" onclick="inputPage.toggleHeInput()"/>英文
+        &nbsp; &nbsp;
+        <input  type="button" onclick="inputPage.copyAll()" value="全拷贝"/> 
+        &nbsp; &nbsp;
+        <input  type="button" onclick="inputPage.hide_show_image('imageRow')" value="设定(Setting)" id="hide_show_btn"/>
+    </p>
+
+    <p style="text-align:center" id="imageRow">
+        <img alt='heInput MaMap' id="helpImage" src="../Resource/Image/Mixed/MaMap.png" />
+    </p>
+    <p style="text-align:center;display:none" id="assistantSection">
+        <span style="color:red; font-size:large; text-align:center">(Shift键换英文 ---- Ctrl键换中文)</span><br />
+
+            <span><input type="radio" id='mainKeyboardOnly4HeInput' name="keyboardSetting" value="mainKeyboardOnly" onclick="inputPage.changeKeyboardSetting()"/>大键盘汉字，小键盘数字
+            </span><br />
+            <span><input type="radio" id='numPadOnly4HeInput'  name="keyboardSetting" value="numPadOnly" onclick="inputPage.changeKeyboardSetting()"/>大键盘英文，小键盘汉字
+            </span><br />
+            <span><input type="radio" id='both4HeInput' name="keyboardSetting" value="both" checked="checked"  onclick="inputPage.changeKeyboardSetting()"/>大小键盘都输入汉字(预设)<br />
+		    </span><br />
+      
+        <!--
+		<span>
+		    <input type="text" style="text-align:center; color:blue; font-size:24px; width:100px; height:30px; font-family:MingLiU" id="DanZi_Code_Wanted" value="例"/>&nbsp;&nbsp;
+		    <input type="button" onclick="inputPage.findDanZiCode()" value="查询编码"/>
+		</span> <br />
+        <span id='Code_Result' style="color:red; font-size:20px; font-family:KaiTi">&nbsp</span><br /><br />
+        -->
+	</p>
+    <br />
+    <script>
+        document.write('<footer style="color:blue;text-align:center">'
+        + '<span>和码字形技术练习与输入，在'
+        + '<a href="https://itunes.apple.com/app/id417876708" target="_blank">iOS</a>, '
+        + '<a href="https://play.google.com/store/apps/developer?id=Guilin+Ouyang" target="_blank">Android</a>, '
+        + '<a href="http://www.hezi.net/he/HTML/HeChinese_Download.html" target="_blank">Windows</a>'
+        + '系统上都有独立(Native)软件。</span><br />'
+        + '<span>Native apps are available for: '
+        + '<a href="https://itunes.apple.com/app/id417876708" target="_blank">iOS</a>, '
+        + '<a href="https://play.google.com/store/apps/developer?id=Guilin+Ouyang" target="_blank">Android</a>, '
+        + '<a href="http://www.hezi.net/he/HTML/HeChinese_Download.html" target="_blank">Windows</a>'
+        + '</span><br />'
+        + '<span>Copyright © www.HeZi.net&nbsp;&nbsp;'
+        + 'Email: <a href="mailto:g_ouyang@hotmail.com">He2@HeZi.net</a>'
+        //+ '&nbsp;&nbsp;<a href="www.HeZi.net" target="_blank">www.HeZi.net</a>'
+        + '</span>'
+        + '</footer>');
+
+        function pageLoaded() {
+            inputPage.init();
+        }
+    </script>
+
+    <script src=".\Script\CaretPosition.js"></script>
+    <script src=".\Script\Setting.js"></script>
+    <script src=".\Script\TypingState.js"></script>
+    <script src=".\Script\Engine.js"></script>
+    <script src=".\Script\HeDataServer.js"></script>
+    <script src=".\Script\HeClient.js"></script>	
+    <script src=".\Script\InputPage.js"></script>
+
+    <script src=".\MaBen\DanZi_Online_Index.txt"></script>
+	<script src=".\MaBen\DanZi_Online_MaBen.txt"></script>	
+    <script src=".\MaBen\CiZu_Online_Index.txt"></script>
+	<script src=".\MaBen\CiZu_Online_MaBen.txt"></script>
+	<script src=".\MaBen\Symbol_Online_MaBen.txt"></script>
+	<script src=".\MaBen\DanZi_List.txt"></script>
+</body>
+</html>

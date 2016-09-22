@@ -27,10 +27,11 @@
 /**
     Declare InputPage closure.
 
-    include:
+    variable:
     1. setting for heInput setting, such as simplify/traditional, mainkeyboard Chinese/English, number pad Chinese/Number
-    2. heClient which will use data server of HeInput
-    entry point.
+    2. heClient for all related to HeInput
+
+    HeInput entry point.
 */
 var inputPage = function () {
 
@@ -149,13 +150,6 @@ var inputPage = function () {
         heTextArea.style.width = (window.innerWidth > 520 ? 480 : window.innerWidth - 40) + "px";
         var height = (window.innerHeight > 320 ? 280 : window.innerHeight - 40);
         heTextArea.style.height =  height + "px";
-
-        var top = 60 + heTextArea.offsetTop + height;
-        var left = (window.innerWidth - 602) / 2;
-
-        var maMapImg = document.getElementById('maMapImage');
-        maMapImg.style.top = top + "px";
-        maMapImg.style.left = left + "px";
     }
 
     function copyAll() {
@@ -188,19 +182,29 @@ var inputPage = function () {
         document.getElementById('heTextArea').focus();
     }
 
+    function hide_show_image(id) {
+        var img = document.getElementById(id);
+        var assistantSec = document.getElementById('assistantSection');
+        if (img.style.display == 'block' || img.style.display == '') {
+            img.style.display = 'none';
+            assistantSec.style.display = 'block';
+            document.getElementById('hide_show_btn').value = "显示字根表(Show Image)";
+        }
+        else {
+            img.style.display = 'block';
+            assistantSec.style.display = 'none';
+            document.getElementById('hide_show_btn').value = "输入设定(Setting)";
+        }
+
+        document.getElementById('heTextArea').focus();
+    }
 
     function toggleHeInput() {
 
         var mainKeyboardMode = setting.mainKeyboardInputMode();
         var numPadMode = setting.numPadInputMode();
 
-        document.getElementById('maMapImage').style.visibility = 'hidden';
-        document.getElementById('maMapToggleButton').value = "显示字根表";
-
         if (document.getElementById("heInput").checked) {
-
-            document.getElementById('Section2').style.visibility = 'visible';
-            document.getElementById('maMapToggleButton').style.visibility = 'visible';
 
             document.getElementById('both4HeInput').checked = true;
 
@@ -214,11 +218,7 @@ var inputPage = function () {
             numPadMode = setting.InputMode.NumberMode;
 
             setting.settingKeyboardInputMode(mainKeyboardMode, numPadMode);
-            document.getElementById('Section2').style.visibility = 'collapse';
-            document.getElementById('maMapToggleButton').style.visibility = 'hidden';
-
-        }
-        
+        }        
         document.getElementById('heTextArea').focus();
     }
 
@@ -229,27 +229,12 @@ var inputPage = function () {
         document.getElementById('Code_Result').innerHTML = result;
     }
 
-    function toggleMaMap() {
-
-        var maMapImg = document.getElementById('maMapImage');
-        var toggleBtn = document.getElementById('maMapToggleButton');
-        if (maMapImg.style.visibility == "hidden") {
-            maMapImg.style.visibility = "visible";
-            toggleBtn.value = "编码查询";
-        }
-        else {
-            maMapImg.style.visibility = 'hidden';
-            toggleBtn.value = "显示字根表";
-        }
-        document.getElementById('heTextArea').focus();
-    }
-
     return {
         init: init,
         copyAll: copyAll,
         findDanZiCode: findDanZiCode,
-        toggleMaMap: toggleMaMap,
         toggleHeInput: toggleHeInput,
-        changeKeyboardSetting: changeKeyboardSetting
+        changeKeyboardSetting: changeKeyboardSetting,
+        hide_show_image: hide_show_image
     }
 }();

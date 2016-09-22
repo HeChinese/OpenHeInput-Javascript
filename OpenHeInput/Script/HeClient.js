@@ -18,6 +18,7 @@
     It is bridge between input page and HeDataServer
     process input before call HeDataServer.
 */
+
 function HeClient() {
 
     var danYinHaoOpen = false;
@@ -31,7 +32,6 @@ function HeClient() {
     var candSelect = document.getElementById('CandSelect');
 
     var heDataServer = HeDataServer();
-
     var candBook = candidateBook();
 
     // if keydown event return false, 
@@ -462,6 +462,10 @@ function HeClient() {
         target.selectionStart = startPos + text.length;
         target.selectionEnd = startPos + text.length;
         target.scrollTop = scrollTop;
+
+        //Following trick fix for HeTraining page <input type='text'>
+        //originally <input type='text'> onchange event only trigered when loose focus 
+        target.onchange();
     }
 
     function showInputDisplay(target, position) {
