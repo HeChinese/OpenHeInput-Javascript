@@ -7,7 +7,7 @@
 OpenHeInput-Javascript is open source HeInput Javascript online application
 
 It is full functional Chinese online Input application, available with with following link:<br/>
-http://www.hezi.net/he/hema/Online/HeInput.htm
+http://www.HeZi.net/HeChinese/HeInput.htm
 
 # Input features include:
 
